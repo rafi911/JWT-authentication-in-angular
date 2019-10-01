@@ -9,3 +9,8 @@ before run the program, you need to follow these steps which are listed below
 3. open the application by your favorite IDE ( ex. vs studio code)
 4. run npm install
 5. run the program and enjoy
+
+
+Login
+User name : test
+Password : test
