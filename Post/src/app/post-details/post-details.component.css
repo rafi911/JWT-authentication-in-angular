@@ -1,0 +1,40 @@
+.mat-card{
+    width: 100%;
+}
+.post-title{
+    font-size: 4.5rem;
+    text-align: center;
+    color: #CCCC00;
+    opacity: 0.4;
+}
+.comment-title {
+    text-align: center;
+    color: white;
+    opacity: 0.4;
+}
+.edit-button{
+    background-color: #CCCC00;	
+    border: #CCCC00 solid 1px;
+}
+
+.comment-title-radius{
+    border-radius: 50%;
+    background-color: #CCCC00;
+    padding : 19px;
+    height:  63px;
+    width: 70px;
+}
+.comment-name{
+    padding-top: 15px;
+}
+.edit-comment-button{
+    padding-top: 15px;
+}
+.post-comments-heading{
+    padding-left: 20px;
+}
+.submit-comment-button{
+    width: -webkit-fill-available;
+    background-color: #CCCC00;	
+    border: #CCCC00 solid 1px;
+}

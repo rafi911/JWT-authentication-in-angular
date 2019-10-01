@@ -1,0 +1,25 @@
+.mat-card{
+    width: 100%;
+    margin-bottom:3%;
+}
+
+.card-title{
+    font-size: 4.5rem;
+    text-align: center;
+    color: #CCCC00;
+    opacity: 0.4;
+}
+.edit-button{
+    background-color: #CCCC00;	
+    border: #CCCC00 solid 1px;
+}
+.comment-button{
+    background-color: #CCCC00;	
+    border: #CCCC00 solid 1px;
+    margin-right: 10px;
+}
+.submit-post-button{
+    width: -webkit-fill-available;
+    background-color: #CCCC00;	
+    border: #CCCC00 solid 1px;
+}

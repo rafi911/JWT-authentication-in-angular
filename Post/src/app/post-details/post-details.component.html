@@ -1,0 +1,98 @@
+<h4>Post details</h4>
+<div *ngIf="post">
+
+
+        <div class="card mat-card" >
+                <div class="card-header">
+                  <h1 class="card-title post-title">{{post.title | slice : 0:2 | uppercase }}</h1>
+                        
+                      </div>
+                <div class="card-body">
+                  <h6 class="card-subtitle mb-2">{{post.title}}</h6>
+                  <p class="card-text">{{post.body}}</p>
+                </div>
+                <h6 class="post-comments-heading">Post comments</h6>
+                <div *ngIf="post.comments">
+                        <div class="card-footer" *ngFor="let comment of post.comments">
+                                <div class="card" >
+                                        
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <div class="comment-title-radius">
+                                                            <h5 class="card-title comment-title">{{comment.name | slice : 0:2 | uppercase }}
+                                                                </h5>
+                                                    </div>
+                                                         
+                                                </div>
+                                                
+                                                <div class="col-md-8 comment-name">
+                                                    <h6 class="card-subtitle mb-2">{{comment.name}}</h6>
+                                                    <h6 class="card-subtitle mb-2">{{comment.email}}</h6>       
+                                                </div>
+                                                <div class="col-md-2 edit-comment-button">
+                                                        <button class="btn edit-button" (click)="openModal(template,comment)" >EDIT</button>
+
+                                                </div>
+                                               
+                                            </div>
+
+                                          <p class="card-text">{{comment.body}}</p>
+                                          <!-- <a href="" (click)="getComments(post.id)"  class="card-link">Comments</a> -->
+                                        </div>
+                                                                               
+                                </div>
+                        </div>
+                </div>
+                
+
+                
+        </div>
+
+
+  </div>
+        
+
+  <ng-template #template>
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">Edit comment</h4>
+          
+          
+        </div>
+        <div class="modal-body" *ngIf="isCommentEditable">
+                <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <input type="text" formControlName="name" class="form-control" 
+                             placeholder="Name" />
+                            <div *ngIf="this.commentForm.controls['name'].invalid" class="invalid-feedback">
+                                <div *ngIf="this.commentForm.controls['name'].invalid">Name is required</div>
+                            </div>
+                        </div>
+        
+                        <div class="form-group">
+                                <input type="text" formControlName="email" class="form-control" 
+                                 placeholder="Email" />
+                                <div *ngIf="this.commentForm.controls['email'].invalid" class="invalid-feedback">
+                                    <div *ngIf="this.commentForm.controls['email'].invalid">Email is required</div>
+                                </div>
+                        </div>
+        
+                        <div class="form-group">
+                                <textarea type="text" formControlName="body" class="form-control" 
+                                 placeholder="Body" rows="2" ></textarea>
+                                <div *ngIf="this.commentForm.controls['body'].invalid" class="invalid-feedback">
+                                    <div *ngIf="this.commentForm.controls['body'].invalid">Body is required</div>
+                                </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <button [disabled]="loading || commentForm.invalid" class="btn submit-comment-button">Submit</button>
+                            <img *ngIf="loading" class="pl-2" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                        </div>
+                        <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+                    </form>
+                  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+        </div>
+</ng-template>

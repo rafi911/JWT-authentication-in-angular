@@ -1,0 +1,20 @@
+.login-page {
+	width: 30%;
+	height: 37%;
+	position: fixed;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+  	padding: 30px;
+	margin: auto;
+}
+.header{
+    text-align: center;
+}
+
+.login-button{
+    width: -webkit-fill-available;
+    background-color: #CCCC00;	
+    border: #CCCC00 solid 1px;
+}
